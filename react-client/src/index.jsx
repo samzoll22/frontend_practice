@@ -1,37 +1,39 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import Nav from './components/Nav.jsx';
+import Form from './components/BusinessForm.jsx';
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      formView: true
+    }
   }
 
   render () {
     return (
     <div>
       <Nav />
-      <Row>
-         <Col xs={12} md={6} mdOffset={3}>
-           <h1 className="headerText">LET'S GET STARTED</h1>
-         </Col>
-       </Row>
+      <Grid>
+        <Row>
+          <Col xs={12} md={6} mdOffset={3}>
+            <h1 className="headerText center">LET'S GET STARTED</h1>
+          </Col>
+        </Row>
+        <Row>
+          {this.state.formView ?
+            <Form />
+            : <h1>starter view</h1>
+          }
+
+        </Row>
+      </Grid>
     </div>)
   }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
 
-  //   <div>
-  //     <Grid>
-  //       <Nav />
-  //       <Row>
-  //         <Col xs={12} md={6} mdOffset={3}>
-  //           <h1>LET'S GET STARTED</h1>
-  //         </Col>
-  //       </Row>
-  //     </Grid>
-  //   </div>)
-  // }
