@@ -1,12 +1,12 @@
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
+import { Navbar, Image } from 'react-bootstrap';
 
 
 const Nav = () => (
   <Navbar>
     <Navbar.Header>
       <Navbar.Brand>
-        <h1>Simplr</h1>
+        <Image className='logo' src="imgs/simplr_logo.svg" />
       </Navbar.Brand>
     </Navbar.Header>
   </Navbar>

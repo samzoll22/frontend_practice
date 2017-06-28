@@ -19,16 +19,17 @@ class App extends React.Component {
       <Nav />
       <Grid>
         <Row>
-          <Col xs={12} md={6} mdOffset={3}>
+          <Col sm={12} md={6} mdOffset={3}>
             <h1 className="headerText center">LET'S GET STARTED</h1>
           </Col>
         </Row>
         <Row>
           {this.state.formView ?
-            <Form />
+            <Col sm={12} md={8} mdOffset={2}>
+              <Form />
+            </Col>
             : <h1>starter view</h1>
           }
-
         </Row>
       </Grid>
     </div>)
