@@ -44,7 +44,6 @@ body {
   font-size: 14px;
 }
 
-
 /******** Button Styles ********/
 
 .registerButton {
@@ -64,6 +63,12 @@ body {
 }
 
 /******** Adjustments ********/
+
+.dropdown {
+  background-color: #fff !important;
+  color: #828282;
+  font-family: trebuchetms;
+}
 
 .navbar-default {
     background-color: #fff;

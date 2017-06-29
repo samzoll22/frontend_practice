@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Grid, Row, Col, Glyphicon, Modal } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import Nav from './components/Nav.jsx';
+import Success from './components/RegistrationSuccess.jsx';
 import Form from './components/BusinessForm.jsx';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -38,20 +38,7 @@ class App extends React.Component {
             </Col>
           </Row>
         </Grid>)    
-        : (
-          <Grid >
-            <div className="center topPadd">
-              <Modal.Dialog className="animation rotateIn ">
-                <div className="topPadd">
-                  <Glyphicon glyph="glyphicon glyphicon-ok" className="successMark" />
-                </div>
-                <h1 className="headerText"> Submission Success ! </h1>
-                <div className="topPadd bottomPadd">
-                  <h4>Hold on tight and we'll be in touch soon.</h4>
-                </div>
-              </Modal.Dialog>
-            </div>
-          </Grid>)}
+        : (<Success />)}
     </div>)
   }
 }

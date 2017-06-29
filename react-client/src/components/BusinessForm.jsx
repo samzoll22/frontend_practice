@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Checkbox, Button } from 'react-bootstrap';
 
-
 class BusinessForm extends React.Component {
   constructor(props) {
     super(props);
@@ -64,7 +63,6 @@ class BusinessForm extends React.Component {
     })
   }
 
-
   getEmailValidationState() {
     const email = this.state.email;
     if (!email) {
@@ -103,7 +101,7 @@ class BusinessForm extends React.Component {
     if (!this.state.formComplete) {
       alert('Please complete the form and accept our policies before registering.')
     } else {
-      console.log('Form Submission Ready For Server: ', formData);
+      console.log('Form Submission Data Ready For Server: ', formData);
       this.props.isSubmitted();
     }
   }
@@ -119,14 +117,13 @@ class BusinessForm extends React.Component {
 
     for (let key in formData) {
       if (formData[key] === '') {
-        console.log('form fields incomplete')
+        console.log('Incomplete: Form Fields ')
         return;
       } else if (checkbox <= 1) {
-        console.log('checkbox incomplete')
+        console.log('Incomplete: Checkboxes')
         return;
       }
     }
-    console.log('form complete')
     this.setState({
       formComplete: true
     })
@@ -203,7 +200,7 @@ class BusinessForm extends React.Component {
         <h4 className="formHeaderText">
           Type of Business
         </h4>
-        <FormControl componentClass="select" placeholder="select">
+        <FormControl componentClass="select" placeholder="select" className="dropdown">
           <option value="0">Select your business</option>
           <option value="1">...</option>
         </FormControl>

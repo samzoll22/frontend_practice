@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar, Image } from 'react-bootstrap';
 
-
 const Nav = () => (
   <Navbar>
     <Navbar.Header>
