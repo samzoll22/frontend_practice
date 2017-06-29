@@ -99,7 +99,7 @@ class BusinessForm extends React.Component {
     }
 
     if (!this.state.formComplete) {
-      alert('Please complete the form and accept our policies before registering.')
+      alert('Required fields cannot be empty, please complete the form and accept the policies before registering.')
     } else {
       console.log('Form Submission Data Ready For Server: ', formData);
       this.props.isSubmitted();
@@ -203,6 +203,7 @@ class BusinessForm extends React.Component {
         <FormControl componentClass="select" placeholder="select" className="dropdown">
           <option value="0">Select your business</option>
           <option value="1">...</option>
+          <option value="2">...</option>
         </FormControl>
       </FormGroup>
       <FormGroup >
@@ -222,7 +223,7 @@ class BusinessForm extends React.Component {
         </Checkbox>
       </FormGroup>
       <div className="center topPadd">
-        <Button  onMouseOver={this.isFormComplete} onClick={this.getFormValues} className="registerButton" type="submit" >
+        <Button onMouseOver={this.isFormComplete} onClick={this.getFormValues} className="registerButton" type="submit" >
           REGISTER
         </Button>
       </div>

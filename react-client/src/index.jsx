@@ -24,21 +24,20 @@ class App extends React.Component {
     return (
     <div>
       <Nav />
-
         {!this.state.formSubmitted ?
         (<Grid>
           <Row>
-            <Col sm={12} md={6} mdOffset={3}>
+            <Col xs={12} md={6} mdOffset={3}>
               <h1 className="animation slideInDown headerText center">LET'S GET STARTED</h1>
             </Col>
           </Row>
           <Row>
-            <Col sm={12} md={6} mdOffset={3}>
+            <Col xs={12} md={6} mdOffset={3}>
               <Form isSubmitted={this.isSubmitted} />
             </Col>
           </Row>
         </Grid>)    
-        : (<Success />)}
+        : <Success />}
     </div>)
   }
 }
