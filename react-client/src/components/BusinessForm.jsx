@@ -1,25 +1,30 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Form, FormGroup, FormControl, ControlLabel, HelpBlock, Checkbox, Button } from 'react-bootstrap';
+
 
 class BusinessForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      formComplete: false,
       name: '',
       email: '',
       username: '',
       pw: '',
       website: '',
+      tospp: 0
     }
 
-    this.getEmailValidationState = this.getEmailValidationState.bind(this);
-    this.getPwValidationState = this.getPwValidationState.bind(this);
     this.handleName = this.handleName.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePw = this.handlePw.bind(this);
     this.handleWebsite = this.handleWebsite.bind(this);
+    this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.getEmailValidationState = this.getEmailValidationState.bind(this);
+    this.getPwValidationState = this.getPwValidationState.bind(this);
+    this.getFormValues = this.getFormValues.bind(this);
+    this.isFormComplete = this.isFormComplete.bind(this);
   }
 
   handleName(e) {
@@ -52,6 +57,13 @@ class BusinessForm extends React.Component {
     });
   }
 
+  handleCheckbox() {
+    let count = this.state.tospp += 1;
+    this.setState({
+      tospp: count
+    })
+  }
+
 
   getEmailValidationState() {
     const email = this.state.email;
@@ -78,10 +90,52 @@ class BusinessForm extends React.Component {
     }
   }
 
+  getFormValues(props) {
+    const formData = {
+      name: this.state.name,
+      email: this.state.email,
+      username: this.state.username,
+      pw: this.state.pw,
+      website: this.state.website,
+      type: null
+    }
+
+    if (!this.state.formComplete) {
+      alert('Please complete the form and accept our policies before registering.')
+    } else {
+      console.log('Form Submission Ready For Server: ', formData);
+      this.props.isSubmitted();
+    }
+  }
+
+  isFormComplete() {
+    const checkbox = this.state.tospp;
+    const formData = {
+      name: this.state.name,
+      email: this.state.email,
+      username: this.state.username,
+      pw: this.state.pw,
+    }
+
+    for (let key in formData) {
+      if (formData[key] === '') {
+        console.log('form fields incomplete')
+        return;
+      } else if (checkbox <= 1) {
+        console.log('checkbox incomplete')
+        return;
+      }
+    }
+    console.log('form complete')
+    this.setState({
+      formComplete: true
+    })
+  }
+
 
   render () {
     return (
-    <Form>
+    <Form className="animation slideInUp" >
       <FormGroup >
         <h4 className="formHeaderText">
           Business Name
@@ -158,20 +212,20 @@ class BusinessForm extends React.Component {
         <h4 className="formHeaderText">
           Terms of Service
         </h4>
-        <Checkbox inline>
-           I have read and I do accept <a href="#"> terms of services</a>
+        <Checkbox onClick={this.handleCheckbox} inline>
+           I have read and I do accept <a href="#"> <u>terms of services</u></a>
         </Checkbox>
       </FormGroup>
       <FormGroup >
         <h4 className="formHeaderText">
           Privacy Policy
         </h4>
-        <Checkbox inline>
-           I have read and I do accept <a href="#"> privacy policy</a>
+        <Checkbox onClick={this.handleCheckbox} inline>
+           I have read and I do accept <a href="#"> <u>privacy policy</u></a>
         </Checkbox>
       </FormGroup>
-      <div className="center buttonPadd">
-        <Button className="registerButton" type="submit">
+      <div className="center topPadd">
+        <Button  onMouseOver={this.isFormComplete} onClick={this.getFormValues} className="registerButton" type="submit" >
           REGISTER
         </Button>
       </div>

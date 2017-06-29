@@ -8,11 +8,23 @@ body {
   text-align: center;
 }
 
+.topPadd {
+  padding-top: 2em;
+}
+
+.bottomPadd {
+  padding-bottom: 2em;
+}
 
 /******** Logo Styles ********/
 
 .logo {
   height: 80px;
+}
+
+.successMark {
+  color: #3a91b8;
+  font-size: 6em;
 }
 
 /******** Text Styles ********/
@@ -37,7 +49,7 @@ body {
 
 .registerButton {
   width: 180px;
-  height: 60px;
+  height: 50px;
   color: #fff;
   font-size: 1.4em;
   font-family: trebuchetms;
@@ -67,6 +79,63 @@ span.form-control-feedback {
   padding-top: 28px;
 }
 
-.buttonPadd {
-  padding-top: 2em;
+.modal-dialog {
+    padding-top: 6em;
 }
+
+/******** Animations ********/
+
+.animation {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.rotateIn {
+  animation-name: rotateIn;
+}
+
+.slideInUp {
+  animation-name: slideInUp;
+}
+
+.slideInDown {
+  animation-name: slideInDown;
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translate3d(0, -100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    transform-origin: center;
+    transform: rotate3d(0, 0, 1, -200deg);
+    opacity: 0;
+  }
+
+  to {
+    transform-origin: center;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
